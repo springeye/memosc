@@ -6,7 +6,7 @@
 
 ## TODO
 - [✅] Packaged cross-platform client (MacOS & Windows & Linux only)
-- [] Automatic updates 
+- [✅] Automatic updates 
 - [] Customizing the Open API Path
 - [] Customizing the port and path to save data
   Coming soon...
