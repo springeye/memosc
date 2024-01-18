@@ -21,16 +21,22 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,6 +44,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -52,6 +59,7 @@ import com.github.springeye.memosc.components.Heatmap
 import com.github.springeye.memosc.components.ITextField
 import com.github.springeye.memosc.core.Base64Image
 import com.github.springeye.memosc.model.weekDays
+import com.github.springeye.memosc.ui.app.AppScreenModel
 import com.github.springeye.memosc.ui.home.tab.ArchivedTab
 import com.github.springeye.memosc.ui.home.tab.DaysReviewTab
 import com.github.springeye.memosc.ui.home.tab.ExploreTab
@@ -67,13 +75,20 @@ import io.kamel.image.asyncPainterResource
 object HomeScreen : Screen {
     private fun readResolve(): Any = HomeScreen
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun Content() {
         val screenModel = getScreenModel<MemoModel>()
+        val appModel = getScreenModel<AppScreenModel>()
         val user = screenModel.user
         val notification = LocalNotification.current
         val homeTab = remember {
             HomeTab()
+        }
+        val urlHandler = LocalUriHandler.current
+        var showUpdateDialog by remember { mutableStateOf(false) }
+        LaunchedEffect(Unit){
+            showUpdateDialog=appModel.newVersion!=null
         }
         val weekDays = remember { weekDays }
         TabNavigator(homeTab) {
@@ -121,6 +136,31 @@ object HomeScreen : Screen {
                         CurrentTab()
                     }
 
+                }
+                if(showUpdateDialog){
+                    AlertDialog( onDismissRequest = {
+                        showUpdateDialog=false
+                    }, text = {
+                        Text("发现新版本 ${appModel.newVersion?.first}")
+                    },        confirmButton = {
+                        TextButton(
+                            onClick = {
+                                showUpdateDialog=false
+                                appModel.newVersion?.second?.let { it1 -> urlHandler.openUri(it1) }
+                            }
+                        ) {
+                            Text("去下载")
+                        }
+                    },
+                        dismissButton = {
+                            TextButton(
+                                onClick = {
+                                    showUpdateDialog=false
+                                }
+                            ) {
+                                Text("取消")
+                            }
+                        })
                 }
             }
         }

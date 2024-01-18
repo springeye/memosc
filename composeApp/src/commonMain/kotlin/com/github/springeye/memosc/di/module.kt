@@ -19,6 +19,7 @@ import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.builtin.CallConverterFactory
 import de.jensklingenberg.ktorfit.ktorfit
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.HttpRedirect
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.cookies.CookiesStorage
 import io.ktor.client.plugins.cookies.HttpCookies
@@ -89,6 +90,7 @@ val appModule = module {
             install(ContentNegotiation) {
                 json(json= get())
             }
+            install(HttpRedirect)
         }
     }
     single {
