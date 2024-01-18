@@ -8,10 +8,13 @@
 - [✅] Packaged cross-platform client (MacOS & Windows & Linux only)
 - [✅] Automatic updates 
 - [] Customizing the Open API Path
-- [] Customizing the port and path to save data
-  Coming soon...
+- [] Coming soon...
 
 ## Build
 
 https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-getting-started.html#join-the-community
 
+## Thanks to the following projects for helping me
+
+[](https://github.com/usememos/memos)
+[](https://github.com/mudkipme/MoeMemosAndroid)
