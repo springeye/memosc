@@ -1,11 +1,8 @@
 package com.github.springeye.memosc.repository
 
-import com.github.springeye.memosc.MemosApi
+import com.github.springeye.memosc.api.MemosApi
 import com.github.springeye.memosc.db.MemoQueryWhere
 import com.github.springeye.memosc.model.Memo
-import com.github.springeye.memosc.model.MemosRowStatus
-import com.github.springeye.memosc.model.MemosVisibility
-import kotlinx.coroutines.delay
 
 
 class MemoRepository(private val api: MemosApi,) {

@@ -2,10 +2,9 @@ package com.github.springeye.memosc.ui.app
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.github.springeye.memosc.AppPreferences
-import com.github.springeye.memosc.MemosApi
+import com.github.springeye.memosc.api.MemosApi
 import com.github.springeye.memosc.getPlatform
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.plugins.cookies.cookies
 import io.ktor.client.request.get
 import io.ktor.client.request.header
@@ -13,7 +12,6 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.utils.io.printStack
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
 
 class AppScreenModel(private val api: MemosApi,
                      private val httpClient: HttpClient,

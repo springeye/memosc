@@ -4,8 +4,8 @@ package com.github.springeye.memosc.ui.login
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.github.springeye.memosc.AppPreferences
-import com.github.springeye.memosc.MemosApi
-import com.github.springeye.memosc.SignInInput
+import com.github.springeye.memosc.api.MemosApi
+import com.github.springeye.memosc.api.SignInInput
 import io.ktor.client.HttpClient
 import io.ktor.http.isSuccess
 import kotlinx.coroutines.launch

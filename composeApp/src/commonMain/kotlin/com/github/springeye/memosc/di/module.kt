@@ -3,7 +3,7 @@ package com.github.springeye.memosc.di
 import com.github.springeye.memosc.AppPreferences
 import com.github.springeye.memosc.CoreComponent
 import com.github.springeye.memosc.CoreComponentImpl
-import com.github.springeye.memosc.MemosApi
+import com.github.springeye.memosc.api.MemosApi
 
 import com.github.springeye.memosc.db.createAppDatabase
 import com.github.springeye.memosc.db.model.AppDatabase
@@ -18,7 +18,6 @@ import com.github.springeye.memosc.ui.login.LoginScreenModel
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.builtin.CallConverterFactory
 import de.jensklingenberg.ktorfit.ktorfit
-import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.cookies.CookiesStorage

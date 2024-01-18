@@ -1,4 +1,4 @@
-package com.github.springeye.memosc
+package com.github.springeye.memosc.api
 import com.github.springeye.memosc.model.Memo
 import com.github.springeye.memosc.model.MemosRowStatus
 import com.github.springeye.memosc.model.MemosVisibility

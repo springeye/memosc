@@ -12,10 +12,10 @@ import app.cash.paging.Pager
 import app.cash.sqldelight.Query
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.github.springeye.memosc.CreateMemoInput
-import com.github.springeye.memosc.MemosApi
-import com.github.springeye.memosc.PatchMemoInput
-import com.github.springeye.memosc.UpdateMemoOrganizerInput
+import com.github.springeye.memosc.api.CreateMemoInput
+import com.github.springeye.memosc.api.MemosApi
+import com.github.springeye.memosc.api.PatchMemoInput
+import com.github.springeye.memosc.api.UpdateMemoOrganizerInput
 import com.github.springeye.memosc.core.createIFile
 import com.github.springeye.memosc.core.formatDate
 import com.github.springeye.memosc.core.parseDate
@@ -40,7 +40,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone

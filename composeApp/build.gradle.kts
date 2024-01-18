@@ -199,8 +199,10 @@ compose.desktop {
         mainClass = "com.github.springeye.memosc.MainKt"
         buildTypes.release {
             proguard {
+                version="7.4.0"
                 isEnabled=false
                 configurationFiles.from("rules.pro")
+                obfuscate=true
             }
         }
         nativeDistributions {
