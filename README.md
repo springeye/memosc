@@ -16,5 +16,5 @@ https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-ge
 
 ## Thanks to the following projects for helping me
 
-[](https://github.com/usememos/memos)
-[](https://github.com/mudkipme/MoeMemosAndroid)
+[memos](https://github.com/usememos/memos)
+[MoeMemosAndroid](https://github.com/mudkipme/MoeMemosAndroid)
