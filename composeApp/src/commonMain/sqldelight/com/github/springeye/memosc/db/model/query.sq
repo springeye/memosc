@@ -1,0 +1,41 @@
+
+selectAllMemo:
+SELECT *
+FROM Memo;
+
+
+insertMemo:
+INSERT OR REPLACE INTO Memo(id,createdTs,creatorId,creatorName,content,pinned,rowStatus,visibility,updatedTs)
+VALUES ?;
+
+insertResource:
+INSERT OR REPLACE INTO Resource(id,createdTs,creatorId,filename,size,type,updatedTs,externalLink,publicId,memoId)
+VALUES ?;
+
+selectResourceByMemoId:
+SELECT *
+FROM Resource
+WHERE memoId = ?;
+
+
+deleteAllMemo:
+DELETE FROM Memo;
+
+deleteAllResource:
+DELETE FROM Resource;
+
+countMemos:
+SELECT count(*) FROM Memo;
+
+memos:
+SELECT *
+FROM Memo
+LIMIT :limit OFFSET :offset;
+
+insertOrReplaceRemoteKey:
+INSERT OR REPLACE INTO RemoteKey(creatorId,rowStatus,visibility)
+VALUES?;
+selectRemoteKeyByQuery:
+SELECT * FROM RemoteKey WHERE creatorId =? AND rowStatus=? AND visibility=?;
+deleteRemoteKeyByQuery:
+DELETE FROM RemoteKey WHERE creatorId =? AND rowStatus=? AND visibility=?;

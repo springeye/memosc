@@ -1,0 +1,34 @@
+import kotlin.Boolean;
+import com.github.springeye.memosc.model.MemosRowStatus;
+import com.github.springeye.memosc.model.MemosVisibility;
+
+
+CREATE TABLE  IF NOT EXISTS Memo (
+    id INTEGER PRIMARY KEY,
+    createdTs INTEGER  NOT NULL,
+    creatorId INTEGER  NOT NULL,
+    creatorName text,
+    content text NOT NULL,
+    pinned INTEGER AS Boolean NOT NULL ,
+    rowStatus text AS MemosRowStatus NOT NULL,
+    visibility text AS MemosVisibility NOT NULL,
+    updatedTs INTEGER  NOT NULL
+);
+CREATE TABLE  IF NOT EXISTS RemoteKey (
+    creatorId INTEGER,
+    rowStatus TEXT AS MemosRowStatus,
+    visibility TEXT AS MemosVisibility
+);
+CREATE TABLE  IF NOT EXISTS Resource (
+    id INTEGER PRIMARY KEY ,
+    createdTs INTEGER  NOT NULL,
+    creatorId INTEGER  NOT NULL,
+    filename TEXT NOT NULL,
+    size INTEGER  NOT NULL,
+    type TEXT  NOT NULL,
+    updatedTs INTEGER  NOT NULL,
+    externalLink TEXT,
+    publicId TEXT,
+    memoId INTEGER
+);
+

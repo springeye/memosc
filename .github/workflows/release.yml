@@ -1,0 +1,61 @@
+name: Release
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  gradle:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: memosc_${{ github.ref_name }}_amd64.deb
+            asset_name: memosc_${{ github.ref_name }}_amd64.deb
+            type: Deb
+            dir: deb
+          - os: windows-latest
+            artifact_name: memosc-${{ github.ref_name }}.exe
+            asset_name: memosc-${{ github.ref_name }}.exe
+            type: Exe
+            dir: exe
+          - os: macos-latest
+            artifact_name: memosc-${{ github.ref_name }}.dmg
+            asset_name: memosc-${{ github.ref_name }}.dmg
+            type: Dmg
+            dir: dmg
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: oracle
+          java-version: 19
+          cache: 'gradle'
+      - uses: ConorMacBride/install-package@v1
+        with:
+          apt: fakeroot
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - uses: SebRollen/toml-action@v1.0.2
+        id: read_toml
+        with:
+          file: 'gradle/libs.versions.toml'
+          field: 'versions.packageVersion'
+
+      - name: Execute Gradle build
+
+        run: ./gradlew packageRelease${{ matrix.type }} --no-daemon
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        env:
+          FILE_NAME: ${{steps.read_toml.outputs.value}}
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: composeApp/build/compose/binaries/main-release/${{ matrix.dir }}/${{ matrix.artifact_name }}
+          asset_name: ${{ matrix.asset_name }}
+#          tag: ${{ github.ref }}
+          overwrite: true
+#composeApp/build/compose/binaries/main/dmg/memosc-1.0.0.dmg
