@@ -1,6 +1,6 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
@@ -9,6 +9,7 @@ plugins {
     id("com.google.devtools.ksp") version "1.9.21-1.0.16"
     id("de.jensklingenberg.ktorfit") version "1.11.0"
     id("app.cash.sqldelight") version "2.0.1"
+    id("com.codingfeline.buildkonfig") version "0.15.1"
 
 }
 sqldelight {
@@ -50,6 +51,7 @@ kotlin {
 //            implementation("app.cash.paging:paging-runtime-uikit:3.3.0-alpha02-0.4.0")
 //        }
         androidMain.dependencies {
+
             implementation(libs.compose.ui.tooling.preview.android)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
@@ -183,6 +185,15 @@ android {
     }
 }
 
+buildkonfig {
+    packageName = "com.github.springeye.memosc"
+    // objectName = 'YourAwesomeConfig'
+    // exposeObjectWithName = 'YourAwesomePublicConfig'
+
+    defaultConfigs {
+        buildConfigField(FieldSpec.Type.STRING, "versionCode", libs.versions.packageVersion.get())
+    }
+}
 compose.desktop {
     application {
         mainClass = "com.github.springeye.memosc.MainKt"

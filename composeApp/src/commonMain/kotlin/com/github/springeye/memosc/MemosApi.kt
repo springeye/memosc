@@ -133,4 +133,6 @@ interface MemosApi {
         @Query("limit") limit: Int? = null,
         @Query("offset") offset: Int? = null
     ): List<Memo>
+    @GET
+    suspend fun get(@Url url: String):Map<String,Any>
 }

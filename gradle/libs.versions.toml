@@ -42,7 +42,7 @@ coroutines = "1.7.3"
 androidx-startup = "1.1.1"
 composeIcons = "1.1.0"
 uiGraphicsDesktop = "1.6.0-beta03"
-packageVersion="1.0.0"
+packageVersion="0.0.1"
 
 
 [libraries]

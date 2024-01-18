@@ -63,6 +63,7 @@ val appModule = module {
     }
     single<HttpClient> {
         HttpClient {
+            this.followRedirects=true
             defaultRequest {
 
                 if(headers["Content-Type"].isNullOrEmpty()){
@@ -78,7 +79,7 @@ val appModule = module {
             install(Logging) {
                 logger = object: Logger {
                     override fun log(message: String) {
-                        Napier.v("HTTP Client", null, message)
+//                        Napier.v("HTTP Client", null, message)
                     }
                 }
                 level = LogLevel.ALL
