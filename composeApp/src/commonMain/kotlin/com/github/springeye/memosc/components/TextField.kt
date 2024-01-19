@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 fun ITextField(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier,
+    modifier: Modifier=Modifier,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,

@@ -1,4 +1,4 @@
-package com.github.springeye.memosc.ui.login
+package com.github.springeye.memosc.ui.user
 
 import com.github.springeye.memosc.LocalNotification
 import androidx.compose.foundation.Image
@@ -40,6 +40,7 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.github.springeye.memosc.ui.home.HomeScreen
+import com.github.springeye.memosc.ui.login.LoginScreenModel
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 

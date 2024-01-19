@@ -43,16 +43,27 @@ object ResourcesTab : Tab {
         val model = getScreenModel<MemoModel>()
         val settings = getScreenModel<AppModel>().state.value
         val group by model.resourcesGroup.collectAsState(mapOf())
-        CardItem(modifier = Modifier.fillMaxSize()) {
+        CardItem(
+            modifier = Modifier.verticalScroll(rememberScrollState()).padding(10.dp).fillMaxWidth()
+        ) {
             Column {
-            for (entry in group) {
+                for (entry in group) {
                     Row {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(horizontal = 15.dp).padding(top = 10.dp)) {
-                            Text("${entry.key.formatDate("yyyy")}", style = MaterialTheme.typography.bodySmall)
-                            Text("${entry.key.formatDate("MM")}", style = MaterialTheme.typography.titleMedium)
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier.padding(horizontal = 15.dp).padding(top = 10.dp)
+                        ) {
+                            Text(
+                                "${entry.key.formatDate("yyyy")}",
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                            Text(
+                                "${entry.key.formatDate("MM")}",
+                                style = MaterialTheme.typography.titleMedium
+                            )
                         }
 
-                        FlowRow(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                        FlowRow() {
                             for (resource in entry.value) {
                                 KamelImage(
                                     asyncPainterResource(resource.uri(settings.host)),
@@ -63,7 +74,7 @@ object ResourcesTab : Tab {
                                         .clip(RoundedCornerShape(4.dp)),
                                     contentScale = ContentScale.FillWidth,
 
-                                )
+                                    )
                             }
                         }
                     }

@@ -17,7 +17,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.github.springeye.memosc.LoadingAnimation
 import com.github.springeye.memosc.LocalNotification
 import com.github.springeye.memosc.ui.home.HomeScreen
-import com.github.springeye.memosc.ui.login.LoginScreen
+import com.github.springeye.memosc.ui.user.LoginScreen
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 object AppScreen : Screen {

@@ -54,7 +54,7 @@ fun  CardItem(
     var hover by remember {
         mutableStateOf(false)
     }
-    var background = Modifier.clip(RoundedCornerShape(radius))
+    var background = modifier.clip(RoundedCornerShape(radius))
         .onPointerEvent(PointerEventType.Enter) {
             hover = true;
         }
@@ -64,7 +64,6 @@ fun  CardItem(
         .background(if (hover) hoverColor else color)
 
     Box(modifier = background
-        .then(modifier)
         .border(borderWidth,if (hover) hoverBorderColor else borderColor,shape = RoundedCornerShape(radius))
         .padding(paddingValues),
         content = content)
