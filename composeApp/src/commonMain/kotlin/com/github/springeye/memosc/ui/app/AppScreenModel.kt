@@ -28,13 +28,13 @@ class AppScreenModel(private val api: MemosApi,
     sealed class State {
 
         object Loading : State()
-        data class Result(val isLogin:Boolean) : State()
+        data class Result(val isLogin:Boolean,val host:String) : State()
     }
 
     fun check(){
         screenModelScope.launch {
             checkUpdate()
-            val host=prefers.host()
+            val host=prefers.host()?:""
             val username=prefers.username()
             val password=prefers.password()
             mutableState.value=State.Loading
@@ -42,11 +42,11 @@ class AppScreenModel(private val api: MemosApi,
             if(host!=null){
                 val cookies=httpClient.cookies(host)
                 if(cookies.isNotEmpty()){
-                    mutableState.value=State.Result(true)
+                    mutableState.value=State.Result(true,host)
                     return@launch
                 }
             }
-            mutableState.value=State.Result(false)
+            mutableState.value=State.Result(false,host)
 //                println("cookies===>${cookies}")
         }
     }
