@@ -144,7 +144,7 @@ kotlin {
             implementation(libs.napier.v271)
             implementation(libs.paging.compose.common)
             implementation(libs.androidx.paging3.extensions)
-            implementation("app.cash.sqldelight:coroutines-extensions:2.0.1")
+            implementation(libs.coroutines.extensions)
         }
 
     }

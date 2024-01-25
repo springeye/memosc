@@ -9,7 +9,7 @@ androidx-appcompat = "1.6.1"
 androidx-constraintlayout = "2.1.4"
 androidx-core-ktx = "1.12.0"
 androidx-espresso-core = "3.5.1"
-androidx-material = "1.10.0"
+androidx-material = "1.11.0"
 androidx-test-junit = "1.1.5"
 compose = "1.5.4"
 compose-compiler = "1.5.6"
@@ -23,12 +23,12 @@ kamelImage = "0.9.1"
 kotlin = "1.9.21"
 kotlinxCoroutinesSwing = "1.7.3"
 kotlinxDatetime = "0.5.0"
-kotlinxSerializationJson = "1.6.0"
+kotlinxSerializationJson = "1.6.2"
 ktor = "2.3.7"
 mpfilepicker = "3.1.0"
 multiplatformMarkdownRenderer = "0.10.0"
 ktorfitVersion = "1.11.0"
-napier = "2.6.1"
+napier = "2.7.1"
 okhttp = "4.12.0"
 okio = "3.7.0"
 pagingComposeCommon = "3.3.0-alpha02-0.4.0"
@@ -50,6 +50,7 @@ android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = 
 androidx-paging3-extensions = { module = "app.cash.sqldelight:androidx-paging3-extensions", version.ref = "androidDriver" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
 androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastorePreferences" }
+coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "androidDriver" }
 highlights = { module = "dev.snipme:highlights", version.ref = "highlights" }
 jetbrains-ui-tooling-preview-desktop = { module = "org.jetbrains.compose.ui:ui-tooling-preview-desktop", version.ref = "jetbrains-uiToolingPreviewDesktop" }
 kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamelImage" }
